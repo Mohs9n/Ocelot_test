@@ -1,0 +1,23 @@
+@OcelotApi = http://localhost:5483
+
+GET {{OcelotApi}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{OcelotApi}}/api/auth
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "mohsen",
+  "password": "password"
+}
+
+###
+
+
+GET {{OcelotApi}}/gateway/writers
+Accept: application/json
+
+###

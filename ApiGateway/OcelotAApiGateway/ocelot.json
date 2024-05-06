@@ -5,7 +5,7 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/gateway/writers",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": ["Get"],
       "DownstreamPathTemplate": "/api/writers",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -20,7 +20,7 @@
     },
     {
       "UpstreamPathTemplate": "/gateway/writers/{id}",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": ["Get"],
       "DownstreamPathTemplate": "/api/writers/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -32,7 +32,7 @@
     },
     {
       "UpstreamPathTemplate": "/gateway/writers",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": ["Post"],
       "DownstreamPathTemplate": "/api/writers",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -44,7 +44,7 @@
     },
     {
       "UpstreamPathTemplate": "/gateway/articles",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": ["Get"],
       "DownstreamPathTemplate": "/api/articles",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -62,7 +62,7 @@
     },
     {
       "UpstreamPathTemplate": "/gateway/articles/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "UpstreamHttpMethod": ["Get", "Delete"],
       "DownstreamPathTemplate": "/api/articles/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
