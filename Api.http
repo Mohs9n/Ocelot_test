@@ -1,0 +1,35 @@
+@OcelotApi = http://localhost:5483
+
+GET {{OcelotApi}}/gateway/weatherforecast
+Accept: application/json
+
+###
+
+POST {{OcelotApi}}/gateway/auth
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "aDm1n"
+}
+--{%-
+local body  = context.json_decode(context.result.body)
+
+context.set_env("Token", body.token)
+--%}
+
+###
+
+
+GET {{OcelotApi}}/gateway/writers
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+###
+
+GET {{OcelotApi}}/gateway/articles
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+###
