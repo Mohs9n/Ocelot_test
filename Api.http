@@ -1,23 +1,35 @@
 @OcelotApi = http://localhost:5483
 
-GET {{OcelotApi}}/weatherforecast/
+GET {{OcelotApi}}/gateway/weatherforecast
 Accept: application/json
 
 ###
 
-POST {{OcelotApi}}/api/auth
+POST {{OcelotApi}}/gateway/auth
 Accept: application/json
 Content-Type: application/json
 
 {
-  "username": "mohsen",
-  "password": "password"
+  "username": "admin",
+  "password": "aDm1n"
 }
+--{%-
+local body  = context.json_decode(context.result.body)
+
+context.set_env("Token", body.token)
+--%}
 
 ###
 
 
 GET {{OcelotApi}}/gateway/writers
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW5pc3RyYXRvciIsInNjb3BlIjoic2hvZXMucmVhZCIsImV4cCI6MTcxNTA4MTcwNiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1NDgzIn0.CzIo9TwN1jNo0sdcm4j1erOXTtqYEQBwU3Cp6PPo6MQ
+
+###
+
+GET {{OcelotApi}}/gateway/articles
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW5pc3RyYXRvciIsInNjb3BlIjoic2hvZXMucmVhZCIsImV4cCI6MTcxNTA4MTcwNiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1NDgzIn0.CzIo9TwN1jNo0sdcm4j1erOXTtqYEQBwU3Cp6PPo6MQ
 
 ###

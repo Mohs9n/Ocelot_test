@@ -4,6 +4,33 @@
   },
   "Routes": [
     {
+      "UpstreamPathTemplate": "/gateway/auth",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamPathTemplate": "/api/auth",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5483
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/weatherforecast",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamPathTemplate": "/api/weatherforecast",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5483
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      }
+    },
+    {
       "UpstreamPathTemplate": "/gateway/writers",
       "UpstreamHttpMethod": ["Get"],
       "DownstreamPathTemplate": "/api/writers",
@@ -16,6 +43,15 @@
       ],
       "FileCacheOptions": {
         "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 3
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -40,7 +76,7 @@
           "Host": "localhost",
           "Port": 5482
         }
-      ]
+      ],
     },
     {
       "UpstreamPathTemplate": "/gateway/articles",
@@ -58,6 +94,9 @@
         "Period": "10s",
         "PeriodTimespan": 10,
         "Limit": 3
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
